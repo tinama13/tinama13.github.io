@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Your Name</div>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/projects/">Projects</a></li>
+      <li><a href="/courses/">Courses</a></li>
+      
+      <li>
+        <button id="theme-toggle" style="background:none; border:none; font-size:1.2rem; cursor:pointer;">
+          🌙
+        </button>
+      </li>
+      
+    </ul>
+  </nav>
+
+  <main>
+    {{ content }}
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Your Name.</p>
+  </footer>
+
+  <script src="/assets/js/script.js"></script>
+
+</body>
+</html>

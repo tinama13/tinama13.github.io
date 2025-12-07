@@ -1,0 +1,14 @@
+- name: Embedded Systems
+  code: EECS 373
+  desc: Interfacing sensors with MMIO and C++.
+  type: ce
+
+- name: User Interface Design
+  code: SI 388
+  desc: Prototyping and user testing methodologies.
+  type: ux
+
+- name: Data Structures
+  code: EECS 281
+  desc: Algorithms and complexity analysis.
+  type: ce
