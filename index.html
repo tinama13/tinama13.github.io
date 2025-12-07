@@ -3,8 +3,12 @@ layout: default
 title: Home
 ---
 
-<header style="text-align: center; padding: 3rem 0;">
-  <h1>Hi, I'm a CE Major & UX Minor.</h1>
+<header style="text-align: center; padding: 4rem 0;">
+  
+  <img src="/assets/images/headshot.jpg" alt="Tina Ma" class="profile-pic">
+  
+  <h1>Hi, I'm Tina Ma.</h1>
+  <p>I am currently pursuing a major in Computer Engineering along with a minor in User Experience Design.</p>
   <p>Building efficient systems with user-centric design.</p>
 </header>
 
@@ -12,11 +16,15 @@ title: Home
 <div class="project-grid">
   {% for post in site.posts %}
     {% if post.featured == true %}
-      <div class="card">
-        <span class="tag {{ post.categories }}">{{ post.categories }}</span>
-        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-        <p>{{ post.excerpt }}</p>
-      </div>
+      
+      <a href="{{ post.url }}" class="card-link">
+        <div class="card">
+          <span class="tag {{ post.categories }}">{{ post.categories }}</span>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.description }}</p> <span class="read-more">Read More &rarr;</span>
+        </div>
+      </a>
+
     {% endif %}
   {% endfor %}
 </div>
