@@ -1,7 +1,7 @@
 /* assets/css/style.css */
 
 /* 1. IMPORT FONTS */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
 
 /* 2. DEFINE VARIABLES (The Color Palette) */
 :root {
@@ -13,10 +13,10 @@
     --border: #e2e8f0;
     
     /* Brand Colors */
-    --primary: #4f46e5;        /* Vibrant Indigo */
-    --primary-hover: #4338ca;
-    --gradient-start: #4f46e5;
-    --gradient-end: #9333ea;   /* Purple for that "Creative" vibe */
+    --primary: #001f3f;        /* Navy Blue */
+    --primary-hover: #00152b;
+    --gradient-start: #001f3f;
+    --gradient-end: #003d7a;   /* Lighter Navy for gradient */
     
     /* Tag Colors */
     --ce-bg: #e0f2fe;          /* Light Cyan */
@@ -34,10 +34,10 @@
     --border: #334155;
     
     /* Adjust Brand Colors for Dark Mode */
-    --primary: #818cf8;        /* Lighter Indigo */
-    --primary-hover: #6366f1;
-    --gradient-start: #312e81; /* Darker Indigo */
-    --gradient-end: #581c87;   /* Darker Purple */
+    --primary: #0066cc;        /* Bright Navy Blue */
+    --primary-hover: #0052a3;
+    --gradient-start: #001f3f; /* Navy */
+    --gradient-end: #003d7a;   /* Lighter Navy */
     
     /* Adjust Tags for Dark Mode */
     --ce-bg: #0c4a6e;
@@ -52,7 +52,7 @@
 }
 
 body {
-    font-family: 'Inter', -apple-system, sans-serif;
+    font-family: 'Outfit', -apple-system, sans-serif;
     background-color: var(--bg-body);
     color: var(--text-main);
     margin: 0;
@@ -119,6 +119,37 @@ nav a:hover {
     text-decoration: none;
 }
 
+/* Social icons in the nav */
+nav .social-icons {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+nav .social-icons .social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    color: var(--text-muted);
+    transition: background 0.15s ease, color 0.15s ease, transform 0.12s ease;
+}
+
+nav .social-icons .social-link svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
+nav .social-icons .social-link:hover,
+nav .social-icons .social-link:focus {
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
 /* 5. HERO SECTION (The "Attracting" Part) */
 header {
     background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
@@ -144,8 +175,8 @@ header p {
 
 .profile-pic {
     width: 150px;
-    height: 150px;
-    border-radius: 50%;
+    height: 220px;
+    border-radius: 0;
     object-fit: cover;
     
     /* The "Pop" Factor */
@@ -167,6 +198,51 @@ header p {
     cursor: pointer;
 }
 
+/* 11. INTRO HEADER LAYOUT: image left, text right (responsive) */
+.intro-header {
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    color: white;
+    padding: 3.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    text-align: left;
+    margin-bottom: 3rem;
+}
+
+.intro-header .profile-pic {
+    width: 140px;
+    height: 200px;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.intro-header .intro-text {
+    max-width: 720px;
+}
+
+.intro-header h1,
+.intro-header p {
+    color: white;
+    margin: 0 0 0.5rem 0;
+}
+
+@media (max-width: 720px) {
+    .intro-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 4rem 1.5rem;
+    }
+    .intro-header .profile-pic {
+        margin: 0 auto 1.5rem auto;
+        width: 120px;
+        height: 170px;
+    }
+    .intro-header .intro-text {
+        max-width: 100%;
+    }
+}
+
 /* 6. LAYOUT & GRID */
 main {
     max-width: 1000px;
@@ -181,10 +257,40 @@ main {
     padding-left: 1rem;
 }
 
+/* Projects page specific heading styles */
+.projects-page h2 {
+    font-size: 1.6rem;
+    color: var(--primary);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    /* subtle underline accent */
+    padding-bottom: 0.25rem;
+    border-bottom: 2px solid rgba(0,0,0,0.04);
+}
+
+.projects-page h2 + .project-grid {
+    margin-top: 0.5rem;
+}
+
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+}
+
+/* Make the homepage project grid stack vertically (single column) */
+.project-grid-vertical {
+    grid-template-columns: 1fr; /* Single column */
+    gap: 1.25rem; /* slightly tighter vertical spacing for stacked cards */
+}
+
+.project-grid-vertical .card {
+    padding: 1.25rem; /* slightly less vertical padding for stacked look */
+}
+
+.project-grid-vertical .card-image {
+    width: 220px; /* keep images reasonably sized on stacked layout */
+    height: 140px;
 }
 
 /* 7. CARDS (Glassmorphism Lite) */
@@ -195,13 +301,15 @@ main {
     padding: 1.75rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: stretch;
 }
 
-.card:hover {
-    transform: translateY(-5px); /* Lifts up slightly */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    border-color: var(--primary);
+.card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .card h3 {
@@ -221,6 +329,57 @@ main {
     color: var(--text-muted);
     font-size: 0.95rem;
     flex-grow: 1; /* Pushes the 'read more' link to bottom if you add one */
+}
+
+.card-image {
+    width: 250px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+    align-self: center; /* center image vertically in the card */
+    margin: auto 0; /* ensure vertical centering in flex row */
+}
+
+/* Shorter cards for the Projects page */
+.projects-list .card {
+    padding: 1rem; /* reduce vertical padding */
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.projects-list .card-image {
+    width: 180px;
+    height: 110px; /* shorter image */
+    align-self: center; /* center in shorter card variant */
+}
+
+.projects-list .card-content h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+}
+
+.projects-list .card-content p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+
+    display: box; /* fallback */
+    line-clamp: 3; /* new spec (not widely supported) */
+
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 720px) {
+    .projects-list .card {
+        flex-direction: column;
+        padding: 0.9rem;
+    }
+    .projects-list .card-image {
+        width: 100%;
+        height: 150px;
+    }
 }
 
 /* 8. TAGS (CE vs UX colors) */
@@ -294,11 +453,6 @@ th {
     display: block;
 }
 
-.card-link:hover .card {
-    transform: translateY(-5px);
-    border-color: var(--primary);
-}
-
 .read-more {
     color: var(--primary);
     font-weight: bold;
@@ -306,6 +460,21 @@ th {
     margin-top: auto; /* Pushes it to the bottom */
     display: block;
     padding-top: 1rem;
+}
+
+.read-more {
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    transition: background 0.15s ease, transform 0.12s ease, color 0.15s;
+}
+
+.read-more:hover,
+.read-more:focus {
+    background: var(--primary-hover);
+    color: #fff;
+    transform: translateY(-2px);
+    text-decoration: none;
 }
 
 /* 2. Responsive Video Container */
@@ -336,4 +505,107 @@ th {
     display: inline-block;
     margin-bottom: 1.5rem;
     font-weight: 600;
+}
+
+/* 12. BUTTONS */
+.btn-primary {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    margin-top: 1rem;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+/* 13. RESUME PAGE */
+.resume-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.resume-section {
+    margin-bottom: 3rem;
+}
+
+.resume-section h2 {
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.resume-item {
+    margin-bottom: 1.5rem;
+}
+
+.resume-item h3 {
+    margin-bottom: 0.25rem;
+    font-size: 1.1rem;
+}
+
+.resume-subtitle {
+    color: var(--primary);
+    font-weight: 600;
+    margin: 0.25rem 0;
+}
+
+.resume-date {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0.25rem 0;
+}
+
+.resume-item ul {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.resume-item li {
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+/* PDF embed styles */
+.pdf-embed {
+    margin-top: 1rem;
+}
+.pdf-embed iframe {
+    width: 100%;
+    height: 80vh;
+    border: none;
+    border-radius: 8px;
+}
+
+/* View More Projects button */
+.projects-more {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--primary);
+    padding: 0.6rem 1.1rem;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease, transform 0.12s;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-2px);
 }

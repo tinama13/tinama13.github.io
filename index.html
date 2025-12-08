@@ -3,28 +3,38 @@ layout: default
 title: Home
 ---
 
-<header style="text-align: center; padding: 4rem 0;">
-  
+<header class="intro-header">
   <img src="/assets/images/headshot.jpg" alt="Tina Ma" class="profile-pic">
-  
-  <h1>Hi, I'm Tina Ma.</h1>
-  <p>I am currently pursuing a major in Computer Engineering along with a minor in User Experience Design.</p>
-  <p>Building efficient systems with user-centric design.</p>
+
+  <div class="intro-text">
+    <h1>Hi, I'm Tina Ma.</h1>
+    <p>I am currently pursuing a major in Computer Engineering along with a minor in User Experience Design at the University of Michigan.</p>
+    <p>Building efficient systems with user-centric design.</p>
+    <a href="/resume/" class="btn-primary">View Resume</a>
+  </div>
 </header>
 
-<h2>Featured Projects</h2>
-<div class="project-grid">
+<h2>Recent Projects</h2>
+<div class="project-grid project-grid-vertical">
   {% for post in site.posts %}
     {% if post.featured == true %}
       
-      <a href="{{ post.url }}" class="card-link">
         <div class="card">
-          <span class="tag {{ post.categories }}">{{ post.categories }}</span>
-          <h3>{{ post.title }}</h3>
-          <p>{{ post.description }}</p> <span class="read-more">Read More &rarr;</span>
+          <div class="card-content">
+            <span class="tag {{ post.categories }}">{{ post.categories }}</span>
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.description }}</p>
+            <a href="{{ post.url }}" class="read-more">Read More &rarr;</a>
+          </div>
+          {% if post.image %}
+            <img src="{{ post.image }}" alt="{{ post.title }}" class="card-image">
+          {% endif %}
         </div>
-      </a>
 
     {% endif %}
   {% endfor %}
+</div>
+
+<div class="projects-more">
+  <a href="/projects/" class="btn-secondary">View More Projects</a>
 </div>

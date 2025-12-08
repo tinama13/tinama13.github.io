@@ -6,13 +6,19 @@ permalink: /projects/
 
 # All Projects
 
-## Computer Engineering (CE)
+## Computer Engineering
 <div class="project-grid">
   {% for post in site.categories.CE %}
     <div class="card">
-      <span class="tag ce">Hardware</span>
-      <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-      <p>{{ post.excerpt }}</p>
+      <div class="card-content">
+        <span class="tag ce">Hardware</span>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.excerpt }}</p>
+        <a href="{{ post.url }}" class="read-more">Read More &rarr;</a>
+      </div>
+      {% if post.image %}
+        <img src="{{ post.image }}" alt="{{ post.title }}" class="card-image">
+      {% endif %}
     </div>
   {% endfor %}
 </div>
@@ -23,9 +29,15 @@ permalink: /projects/
 <div class="project-grid">
   {% for post in site.categories.UX %}
     <div class="card">
-      <span class="tag ux">Design</span>
-      <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-      <p>{{ post.excerpt }}</p>
+      <div class="card-content">
+        <span class="tag ux">Design</span>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.excerpt }}</p>
+        <a href="{{ post.url }}" class="read-more">Read More &rarr;</a>
+      </div>
+      {% if post.image %}
+        <img src="{{ post.image }}" alt="{{ post.title }}" class="card-image">
+      {% endif %}
     </div>
   {% endfor %}
 </div>
