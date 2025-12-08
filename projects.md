@@ -13,7 +13,7 @@ permalink: /projects/
       <div class="card-content">
         <span class="tag ce">Hardware</span>
         <h3>{{ post.title }}</h3>
-        <p>{{ post.excerpt }}</p>
+        <p>{{ post.description }}</p>
         <a href="{{ post.url }}" class="read-more">Read More &rarr;</a>
       </div>
       {% if post.image %}
@@ -32,7 +32,7 @@ permalink: /projects/
       <div class="card-content">
         <span class="tag ux">Design</span>
         <h3>{{ post.title }}</h3>
-        <p>{{ post.excerpt }}</p>
+        <p>{{ post.description }}</p>
         <a href="{{ post.url }}" class="read-more">Read More &rarr;</a>
       </div>
       {% if post.image %}

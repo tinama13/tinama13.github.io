@@ -4,7 +4,7 @@ title: "Improving the Course Registration Experience for Full-Time UM Undergradu
 date: 2025-03-22
 categories: UX
 featured: true
-description: "This case study explores the challenges full-time undergraduate students face when navigating the University of Michigan’s course registration systemThe project identifies key pain points and proposes design opportunities to make the process faster, clearer, and more efficient."
+description: "This case study explores the challenges full-time undergraduate students face when navigating the University of Michigan’s course registration system. The project identifies key pain points and proposes design opportunities to make the process faster, clearer, and more efficient."
 image: "/assets/images/ux_project.jpg"
 github_link: "https://github.com/tinama13/si422-wolverine-access-study"
 tags: [ux, case-study, research, design]
